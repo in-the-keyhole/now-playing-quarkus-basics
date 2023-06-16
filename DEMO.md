@@ -1,5 +1,5 @@
 ### DEMO SCRIPT
-
+---
 - [ ] Create Quarkus project from the starter - https://code.quarkus.io/
     - [ ] quarkus-resteasy-reactive
     - [ ] quarkus-resteasy-reactive-jackson
@@ -9,8 +9,9 @@
 - [ ] Unzip the downloaded archive and open in IDE
     - [ ] Walk through generated source
 
+---
 ### Developer Experience
-
+---
 - [ ] Talk about "Dev Mode" and start the application using:
     ```
     ./mvnw quarkus:dev
@@ -34,7 +35,9 @@
         - [ ] All properties (Filterable)
         - [ ] "Show only my properties"
 
+---
 ### Dev Services
+---
 - [ ] Add OIDC extension / Copy mvn cmd from starter for quarkus-oidc
     ```
     ./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-oidc"
@@ -60,12 +63,9 @@
         - [ ] Logout / in as alice
         - [ ] Show 200
 
-### Move to fully baked app
-    
-> This will expand on:
->  *Quarkus Extensions*
->  *Dev Services capabilties*
-
+---
+### Expand on Quarkus Extensions and Dev Services
+---
 - [ ] Stop dev mode and close vs code
 - [ ] Open VSCode on now-playing-quarkus
     - [ ] Talk about the app features and extensions used
@@ -87,10 +87,26 @@
     - [ ] Show dev services containers
     - [ ] Demo running app in Postman
     
-
+---
 ### Packaging
-    
-- [ ] Stop dev mode
+---
+- [ ] Stop dev mode (q)
+
+
+#### JVM Mode
+---
+- [ ] Package the app
+
+    ```
+    ./mvnw clean package -DskipTests
+    ```
+
+
+- [ ] Show produced package layers in target/quarkus-app dir  (discuss docker filesystem layers)
+    ```
+    tree ./target/quarkus-app
+    ```
+
 - [ ] Show no running containers
     ```
     docker ps
@@ -106,20 +122,11 @@
     k9s
     ```
 
-- [ ] Show running "prod" containers
+- [ ] Show running "prod" containers in k9s
 - [ ] Port forward containers so we can run locally
-
-#### JVM Mode
-- [ ] Package the app
-
-    ```
-    ./mvnw clean package -DskipTests
-    ```
-
-- [ ] Show produced package layers in target/quarkus-app dir  (discuss docker filesystem layers)
-    ```
-    tree ./target/quarkus-app
-    ```
+    - [ ] keycloak (8180)
+    - [ ] postgresql (5432)
+    - [ ] redis-master (6379)
 
 - [ ] Run in JVM mode 
     ```
@@ -130,17 +137,18 @@
     ```
     docker run -i --rm -p 8080:8080 -equarkus.datasource.jdbc.url=jdbc:postgresql://host.docker.internal:5432/now-playing -equarkus.oidc.auth-server-url=http://host.docker.internal:8180/realms/quarkus-demo -equarkus.redis.hosts=redis://:TCtNvljreU@host.docker.internal/ keyholesoftware/now-playing-quarkus:1.0.0-SNAPSHOT
     ```
+    - [ ] Point out startup time
 
 #### Native Mode
-
+---
 - [ ] Build native image
     ```
     ./mvnw clean package -DskipTests -Pnative -Dquarkus.native.container-build=true
     ```
-
+    - [ ] Discuss build time & pre-built image
 
 #### Kubernetes
-
+---
 - [ ] Deploy to k8s
     ```
     ./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
