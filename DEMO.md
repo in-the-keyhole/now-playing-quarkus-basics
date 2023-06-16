@@ -43,7 +43,7 @@
     ./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-oidc"
     ```
 
-- [ ] Discuss/show how the app auto restarts and start of Dev Service Testcontainer
+- [ ] Discuss/show how the app auto restarts and automatically starts the Dev Service (using Testcontainers)
 - [ ] Show new Keycloak container running in Docker
 - [ ] Show Extension now in DEV UI
     - [ ] Show link to documentation
@@ -66,10 +66,10 @@
 ---
 ### Expand on Quarkus Extensions and Dev Services
 ---
-- [ ] Stop dev mode and close vs code
-- [ ] Open VSCode on now-playing-quarkus
+- [ ] Stop dev mode and close VS Code
+- [ ] Open VS Code on `now-playing-quarkus`
     - [ ] Talk about the app features and extensions used
-        - [ ] ReST API for movie data
+        - [ ] It's a ReST API for movie data
         - [ ] Postgresql / Hibernate / Flyway
         - [ ] MicroProfile
             - [ ] OpenAPI
@@ -84,7 +84,7 @@
         ./mvnw quarkus:dev
         ```
 
-    - [ ] Show dev services containers
+    - [ ] Show the dev services containers that were started
     - [ ] Demo running app in Postman
     
 ---
@@ -93,8 +93,8 @@
 - [ ] Stop dev mode (q)
 
 
-#### JVM Mode
----
+> #### JVM Mode
+
 - [ ] Package the app
 
     ```
@@ -139,22 +139,22 @@
     ```
     - [ ] Point out startup time
 
-#### Native Mode
----
+> #### Native Mode
+
 - [ ] Build native image
     ```
     ./mvnw clean package -DskipTests -Pnative -Dquarkus.native.container-build=true
     ```
     - [ ] Discuss build time & pre-built image
 
-#### Kubernetes
----
+##### Kubernetes
+
 - [ ] Deploy to k8s
     ```
     ./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
     ```
 
-##### CALL API in app deployed to k8s 
+###### CALL API in app deployed to k8s 
 
 - [ ] Port forward the quarkus app service (8080)
 - [ ] Get JWT pbcopy
